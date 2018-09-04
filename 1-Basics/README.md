@@ -54,6 +54,7 @@ function hello() {
 
 hello() // 'Hello, World!'
 ```
+We can call `hello()` as many times as we want. Try it!
 
 ### Strings
 * Anything having to do with sentences or letters
@@ -163,5 +164,4 @@ let dictionary = new Map([['name', 'Miggy], ['age', 9], ['interests', 'eatting']
 let newSet = new Set([9, 8, 7, 7, 6])
 newSet // [9, 8, 7, 6]
 ```
-
 
