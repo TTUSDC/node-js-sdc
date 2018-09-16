@@ -1,18 +1,20 @@
 import axios from 'axios'
 
-const request = axios.create({
-  baseURL: process.env.API_BASE_URL || 'http://localhost:8080
-})
-
 /**
  * Wrapper for the axios so that we can fetch the jokes from 3 different APIs
  */
-class Request {
+export default class Request {
+  constructor() {
+    this.request = axios.create({
+      baseURL: 'http://localhost:8080/'
+    })
+  }
+
   getRonJoke = () => {
     return new Promise((resolve, reject) => {
-      axios.get('/ron')
-        .then((data) => {
-          resolve(data)
+      this.request.get('/ron')
+        .then(({ data }) => {
+          resolve(data.joke)
         })
         .catch((err) => {
           reject(err)
@@ -22,9 +24,9 @@ class Request {
 
   getCSJoke = () => {
     return new Promise((resolve, reject) => {
-      axios.get('/ron')
-        .then((data) => {
-          resolve(data)
+      this.request.get('/cs')
+        .then(({ data }) => {
+          resolve(data.joke)
         })
         .catch((err) => {
           reject(err)
@@ -34,9 +36,9 @@ class Request {
 
   getChuckJoke = () => {
     return new Promise((resolve, reject) => {
-      axios.get('/ron')
-        .then((data) => {
-          resolve(data)
+      this.request.get('/chuck')
+        .then(({ data }) => {
+          resolve(data.joke)
         })
         .catch((err) => {
           reject(err)

@@ -2,25 +2,37 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
+import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import JokeButton from './JokeButton.jsx'
 
-import logger from 'utils/logger'
-
 const styles = {
   card: {
+    margin: '80px auto',
     width: '80%'
   },
-  title: {
-    fontSize: 14,
+  content: {
+    padding: '50px'
+  },
+  buttonSection: {
+    justifyContent: 'center'
   }
 }
 
-const topics = [
-  'Chuck Noris',
-  'Ron Swanson',
-  'Computer Science'
+const categories = [
+  {
+    label: 'Chuck Noris',
+    link: 'chuck',
+  },
+  {
+    label: 'Ron Swanson',
+    link: 'ron',
+  },
+  {
+    label: 'Computer Science',
+    link: 'cs',
+  },
 ]
 
 const Display = (props) => {
@@ -28,25 +40,32 @@ const Display = (props) => {
 
   return (
     <Card className={classes.card}>
-      <CardContent>
-        <Typography
-          className={classes.title}
-          variant='headline'
-        >
-          Jokes from ACM!
-        </Typography>
+      <CardHeader
+        title='Jokes For ACM!'
+        titleTypographyProps={ { align: 'center' } }
+      />
+      <CardContent
+        className={classes.content}
+      >
         <Typography
           className={classes.joke}
           variant='body2'
+          align='center'
         >
-          {props.joke}
+          {props.joke || 'Click bellow for some jokes!'}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className={classes.buttonSection}>
         {
-          topics.map((topic, key) => {
-            logger.info(topic)
-            return <JokeButton source={topic} key={key}/>
+          categories.map((topic, key) => {
+            return (
+              <JokeButton
+                fetchJokes={props.fetchJokes}
+                label={topic.label}
+                link={topic.link}
+                key={key}
+              />
+            )
           })
         }
       </CardActions>
