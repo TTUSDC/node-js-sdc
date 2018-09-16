@@ -2,8 +2,8 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import RestoreIcon from '@material-ui/icons/Restore'
-import FavoriteIcon from '@material-ui/icons/Favorite'
+import GroupIcon from '@material-ui/icons/Group'
+import HomeIcon from '@material-ui/icons/Home'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 
 const styles = {
@@ -13,7 +13,7 @@ const styles = {
 }
 
 class FooterContainer extends React.Component {
-  handleChange = (event, value) => {
+  handleLink = (event, value) => {
     switch(value) {
       case(0):
         window.open('https://acmttu.org/')
@@ -34,12 +34,12 @@ class FooterContainer extends React.Component {
 
     return (
       <BottomNavigation
-        onChange={this.handleChange}
+        onChange={this.handleLink}
         showLabels
         className={classes.root}
       >
-        <BottomNavigationAction label="ACM TTU" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="More Groups" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="ACM TTU" icon={<HomeIcon />} />
+        <BottomNavigationAction label="More Groups" icon={<GroupIcon />} />
         <BottomNavigationAction label="Git Repo" icon={<LocationOnIcon />} />
       </BottomNavigation>
       );

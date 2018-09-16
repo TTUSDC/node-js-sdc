@@ -5,6 +5,9 @@ const cors = require('cors')
 const app = express()
 app.use(cors())
 
+/**
+ * Fetches Chuck Norris Jokes
+ */
 app.get('/chuck', (req, res) => {
   axios.get('http://api.icndb.com/jokes/random')
     .then((response) => {
@@ -15,6 +18,9 @@ app.get('/chuck', (req, res) => {
     })
 })
 
+/**
+ * Fetches Computer Science Jokes
+ */
 app.get('/cs', (req, res) => {
   axios.get('https://geek-jokes.sameerkumar.website/api')
     .then((response) => {
@@ -25,6 +31,9 @@ app.get('/cs', (req, res) => {
     })
 })
 
+/**
+ * Fetches Ron Swanson Jokes
+ */
 app.get('/ron', (req, res) => {
   axios.get('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
     .then((response) => {

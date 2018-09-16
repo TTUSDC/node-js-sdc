@@ -7,17 +7,24 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import JokeButton from './JokeButton.jsx'
 
-const styles = {
-  card: {
-    margin: '80px auto',
-    width: '80%'
-  },
-  content: {
-    padding: '50px'
-  },
-  buttonSection: {
-    justifyContent: 'center'
-  }
+const styles = (theme) => {
+  console.log(theme)
+  return({
+    card: {
+      margin: '80px auto',
+      width: '80%'
+    },
+    content: {
+      padding: '50px'
+    },
+    buttonSection: {
+      justifyContent: 'center',
+      flexDirection: 'row',
+      [theme.breakpoints.down(800)]: {
+        flexDirection: 'column'
+      }
+    },
+  })
 }
 
 const categories = [
@@ -60,6 +67,7 @@ const Display = (props) => {
           categories.map((topic, key) => {
             return (
               <JokeButton
+                className={classes.buttons}
                 fetchJokes={props.fetchJokes}
                 label={topic.label}
                 link={topic.link}
