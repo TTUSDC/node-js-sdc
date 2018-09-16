@@ -1,7 +1,9 @@
 const express = require('express')
 const axios = require('axios')
+const cors = require('cors')
 
 const app = express()
+app.use(cors())
 
 app.get('/chuck', (req, res) => {
   axios.get('http://api.icndb.com/jokes/random')
