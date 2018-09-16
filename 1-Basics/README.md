@@ -1,7 +1,7 @@
 # Lesson 1: Basics
 
 ### What is NodeJS
-* A JavaScript Runtime for the Server
+* A JavaScript Runtime that will let developers run javascript on the server
 * **What it used to be**
     * A really shitty language that no one liked to use since it it was only used
       on the browser and people wanted to use "real" programming languages.
@@ -42,6 +42,10 @@
 |         Synchronous         |            Async           |    Interpreted    |
 |         uses indents        | uses C-like code structure | Simple Data Types |
 | Lot's of Standard Libraries |   Some Standard Libraries  |                   |
+
+### Installing git and git bash
+* You can download everything [here](https://git-scm.com/downloads)
+* This is so that you can run bash on Windows
 
 ### Hello World!
 ```javascript
@@ -138,24 +142,25 @@ x + y + 4 - 2 // 20
 27 / 9 // 3
 ```
 
+* Create an object literal that contains your name, age, major and your favorite cereal
+
+* Create an nested object literal that contains 2 catagories(these will be your objects), 3 truths and 3 lies
+
 ### Data Structures
 **Arrays** - A vector containing data, accessible through index
 ```javascript
 let baby_names = ['Ashley', 'Lilo', 'Jake', 'Landon']
 let mixed_bag = ['Eggs', 9, { fun: true }, false]
 ```
-
-**Maps/HashMap/Dictionary**
-* a data structure for quick look ups
-* Ordered (by time of insertion)
-* Works really well with removing an deleting/adding/adding to key/values
-```javascript
-// Requires a 3D array with two elements in each sub array
-let dictionary = new Map([['name', 'Miggy], ['age', 9], ['interests', 'eatting']])
-```
+* Common Array methods(functions that you can call to manipulate objects)
+    * `.sort()`
+    * `.keys()`
+    * `.pop()`
+    * `.push()`
+    * `.reverse()`
 
 **Sets**
-* Does not allow duplicates and allows for quick look ups
+* Does not allow duplicates and allows for quick existence look ups
 * Unordered
 * Basically a Map with `true` as the values
 
@@ -164,4 +169,24 @@ let dictionary = new Map([['name', 'Miggy], ['age', 9], ['interests', 'eatting']
 let newSet = new Set([9, 8, 7, 7, 6])
 newSet // [9, 8, 7, 6]
 ```
+* Common Set Methods
+    * `.add()`
+    * `.delete()`
+    * `.has()`
+    * `.size`
 
+**Maps/HashMap/Dictionary**
+* a data structure for quick value and existence look ups
+* Ordered (by time of insertion)
+* Works really well with removing an deleting/adding/adding to key/values
+
+```javascript
+// Requires a 3D array with two elements in each sub array
+let dictionary = new Map([['name', 'Miggy], ['age', 9], ['interests', 'eatting']])
+```
+* Common Map methods
+    * `.set(key, value)`
+    * `.get(key)`
+    * `.delete(key)`
+    * `.has(key)`
+    * `.size`
