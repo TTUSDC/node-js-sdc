@@ -11,8 +11,8 @@ import FooterContainer from 'components/Footer/FooterContainer.jsx'
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
-    primary: red,
-    secondary: black,
+    primary: black,
+    secondary: red,
   }
 })
 
