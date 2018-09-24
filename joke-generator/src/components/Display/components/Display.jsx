@@ -6,26 +6,8 @@ import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import JokeButton from './JokeButton.jsx'
-
-const styles = (theme) => {
-  console.log(theme)
-  return({
-    card: {
-      margin: '80px auto',
-      width: '80%'
-    },
-    content: {
-      padding: '50px'
-    },
-    buttonSection: {
-      justifyContent: 'center',
-      flexDirection: 'row',
-      [theme.breakpoints.down(800)]: {
-        flexDirection: 'column'
-      }
-    },
-  })
-}
+import styles from './JokeButton.styles'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const categories = [
   {
@@ -42,8 +24,19 @@ const categories = [
   },
 ]
 
+
 const Display = (props) => {
   const { classes } = props
+
+  const handleNewJoke = () => {
+    if (props.loading) {
+      return <CircularProgress className={classes.progress} />
+    } else if (props.joke) {
+      return props.joke
+    } else {
+      return 'Click on the buttons bellow for some jokes!'
+    }
+  }
 
   return (
     <Card className={classes.card}>
@@ -59,7 +52,7 @@ const Display = (props) => {
           variant='body2'
           align='center'
         >
-          {props.joke || 'Click bellow for some jokes!'}
+          {handleNewJoke()}
         </Typography>
       </CardContent>
       <CardActions className={classes.buttonSection}>
@@ -69,6 +62,7 @@ const Display = (props) => {
               <JokeButton
                 className={classes.buttons}
                 fetchJokes={props.fetchJokes}
+                loading={props.loading}
                 label={topic.label}
                 link={topic.link}
                 key={key}

@@ -18,6 +18,9 @@ const jokeHandler = (state = initialState, action) => {
       state = state.set('error', Boolean(action.payload.error))
       state = state.set('errMsg', action.payload.error)
       break
+    case(ActionTypes.TOGGLE_LOADING):
+      state = state.set('loading', action.payload.loading)
+      break
     default:
       break
   }

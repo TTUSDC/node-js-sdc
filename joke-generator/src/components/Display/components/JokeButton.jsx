@@ -12,6 +12,7 @@ const JokeButton = (props) => {
     <Button
       variant='contained'
       color='secondary'
+      disabled={props.loading}
       className={props.classes.root}
       onClick={handleClick}
     >
