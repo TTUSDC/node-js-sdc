@@ -2,6 +2,8 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles'
 
+import styles from './JokeButton.styles'
+
 const JokeButton = (props) => {
   // Signals redux to fetch a joke
   const handleClick = () => {
@@ -21,15 +23,4 @@ const JokeButton = (props) => {
   )
 }
 
-const styles = (theme) => {
-  return ({
-    root: {
-      margin: theme.spacing.unit,
-      width: '200px',
-      [theme.breakpoints.down(800)]: {
-        width: '80%'
-      }
-    }
-  })
-}
 export default withStyles(styles)(JokeButton)

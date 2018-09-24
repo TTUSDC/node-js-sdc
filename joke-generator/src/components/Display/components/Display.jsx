@@ -6,7 +6,7 @@ import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import JokeButton from './JokeButton.jsx'
-import styles from './JokeButton.styles'
+import styles from './Display.styles'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const categories = [
@@ -49,7 +49,7 @@ const Display = (props) => {
       >
         <Typography
           className={classes.joke}
-          variant='body2'
+          variant='display2'
           align='center'
         >
           {handleNewJoke()}
@@ -60,7 +60,6 @@ const Display = (props) => {
           categories.map((topic, key) => {
             return (
               <JokeButton
-                className={classes.buttons}
                 fetchJokes={props.fetchJokes}
                 loading={props.loading}
                 label={topic.label}

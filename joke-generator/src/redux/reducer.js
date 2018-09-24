@@ -1,3 +1,4 @@
+import assert from 'assert'
 import ActionTypes from './actions'
 import IM from 'immutable'
 
@@ -24,6 +25,8 @@ const jokeHandler = (state = initialState, action) => {
     default:
       break
   }
+
+  assert.ok(IM.Map.isMap(state), 'You did not return a Immutable Object')
 
   return state
 }

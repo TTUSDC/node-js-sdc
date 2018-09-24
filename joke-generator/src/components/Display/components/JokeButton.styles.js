@@ -1,22 +1,12 @@
 const styles = (theme) => {
-  return({
-    card: {
-      margin: '80px auto',
-      width: '80%'
-    },
-    content: {
-      padding: '50px'
-    },
-    buttonSection: {
-      justifyContent: 'center',
-      flexDirection: 'row',
+  return ({
+    root: {
+      margin: theme.spacing.unit,
+      width: '200px',
       [theme.breakpoints.down(800)]: {
-        flexDirection: 'column'
+        width: '80%'
       }
-    },
-    progress: {
-      margin: theme.spacing.unit * 2,
-    },
+    }
   })
 }
 

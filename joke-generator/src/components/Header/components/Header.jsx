@@ -27,7 +27,7 @@ const Header = (props) => {
             color="inherit"
             align='center'
           >
-            The Jokester!
+            ACM Web Development
           </Typography>
         </Toolbar>
       </AppBar>

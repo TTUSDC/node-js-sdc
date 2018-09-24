@@ -7,6 +7,7 @@ import DisplayContainer from 'components/Display/DisplayContainer.jsx'
 import HeaderContainer from 'components/Header/HeaderContainer.jsx'
 import SnackBarContainer from 'components/SnackBar/SnackBarContainer.jsx'
 import FooterContainer from 'components/Footer/FooterContainer.jsx'
+import { hot } from 'react-hot-loader'
 
 const theme = createMuiTheme({
   palette: {
@@ -33,4 +34,4 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout;
+export default hot(module)(Layout);
