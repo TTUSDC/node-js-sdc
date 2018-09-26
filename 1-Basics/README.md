@@ -142,6 +142,10 @@ x + y + 4 - 2 // 20
 27 / 9 // 3
 ```
 
+* Write a function to calculate a person's age given their birth year and the current year
+
+* Write a function to convert inches to cm
+
 * Create an object literal that contains your name, age, major and your favorite cereal
 
 * Create an nested object literal that contains 2 catagories(these will be your objects), 3 truths and 3 lies
