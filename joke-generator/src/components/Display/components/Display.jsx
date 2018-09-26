@@ -25,7 +25,7 @@ const categories = [
 ]
 
 
-const Display = (props) => {
+export const Display = (props) => {
   const { classes } = props
 
   const handleNewJoke = () => {
@@ -48,6 +48,7 @@ const Display = (props) => {
         className={classes.content}
       >
         <Typography
+          id='joke-box'
           className={classes.joke}
           variant='display2'
           align='center'

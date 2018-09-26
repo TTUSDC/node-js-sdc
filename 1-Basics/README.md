@@ -3,13 +3,13 @@
 ### What is NodeJS
 * A JavaScript Runtime that will let developers run javascript on the server
 * **What it used to be**
-    * A really shitty language that no one liked to use since it it was only used
-      on the browser and people wanted to use "real" programming languages.
-    * Just for animations and simple API calls
-    * There were many quirks with JavaScript. It was written in 10 days in May 1995
-      * `var` and lexical scopes
-      * strict equality `===` (checks for the same type and value)
-        and shallow equality `==` (changes the type and then compares)
+  * A really shitty language that no one liked to use since it it was only used
+    on the browser and people wanted to use "real" programming languages.
+  * Just for animations and simple API calls
+  * There were many quirks with JavaScript. It was written in 10 days in May 1995
+    * `var` and lexical scopes
+    * strict equality `===` (checks for the same type and value)
+      and shallow equality `==` (changes the type and then compares)
 * **What it is now**
     * A full-fledged programming language with standards and data libraries for working with simple data structures
     * Used to develop apps for all platforms, including iOS, Android, Mac, Linux and  Web
@@ -182,7 +182,7 @@ newSet // [9, 8, 7, 6]
 
 ```javascript
 // Requires a 3D array with two elements in each sub array
-let dictionary = new Map([['name', 'Miggy], ['age', 9], ['interests', 'eatting']])
+let dictionary = new Map([['name', 'Miggy'], ['age', 9], ['interests', 'eatting']])
 ```
 * Common Map methods
     * `.set(key, value)`

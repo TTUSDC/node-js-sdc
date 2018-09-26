@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import styles from './JokeButton.styles'
 
-const JokeButton = (props) => {
+export const JokeButton = (props) => {
   // Signals redux to fetch a joke
   const handleClick = () => {
     props.fetchJokes(props.link)
