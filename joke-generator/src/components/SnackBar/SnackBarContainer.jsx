@@ -6,10 +6,11 @@ import { connect } from 'react-redux'
 
 export class SnackBarContainer extends React.Component {
   render() {
+    const { error, errMsg, success, succMsg } = this.props
     return (
       <Snackbar
-        open={this.props.error}
-        message={this.props.errMsg}
+        open={error || success}
+        message={errMsg || succMsg}
       />
     )
   }
@@ -17,7 +18,9 @@ export class SnackBarContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   error: state.get('error'),
-  errMsg: state.get('errMsg')
+  errMsg: state.get('errMsg'),
+  success: state.get('success'),
+  succMsg: state.get('succMsg'),
 })
 
 export default connect(mapStateToProps)(SnackBarContainer)

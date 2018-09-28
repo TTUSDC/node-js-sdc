@@ -5,6 +5,8 @@ import IM from 'immutable'
 const initialState = IM.fromJS({
   joke: null,
   loading: false,
+  success: false,
+  succMsg: null,
   error: false,
   errMsg: null,
 })
@@ -19,6 +21,10 @@ const jokeHandler = (state = initialState, action) => {
       state = state.set('error', Boolean(action.payload.error))
       state = state.set('errMsg', action.payload.error)
       break
+    case(ActionTypes.TOGGLE_SUCC):
+      state = state.set('success', Boolean(action.payload.msg))
+      state = state.set('succMsg', action.payload.msg)
+      break;
     case(ActionTypes.TOGGLE_LOADING):
       state = state.set('loading', action.payload.loading)
       break

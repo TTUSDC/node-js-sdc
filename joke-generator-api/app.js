@@ -5,6 +5,11 @@ const cors = require('cors')
 const app = express()
 app.use(cors())
 
+app.get('/user', (req, res) => {
+  let joke = 'Some Joke!'
+  res.json({ joke })
+})
+
 /**
  * Fetches Chuck Norris Jokes
  */
