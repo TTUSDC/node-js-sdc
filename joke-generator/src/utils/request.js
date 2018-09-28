@@ -10,6 +10,32 @@ export default class Request {
     })
   }
 
+  // Sends the joke as a post request
+  createUserJoke = (joke) => {
+    return new Promise((resolve, reject) => {
+      this.request.post('/user', { joke })
+        .then(() => {
+          resolve()
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  }
+
+  // Fetches a saved joke from the database
+  getUserJoke = () => {
+    return new Promise((resolve, reject) => {
+      this.request.get('/user')
+        .then(({ data }) => {
+          resolve(data.joke)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  }
+
   getRonJoke = () => {
     return new Promise((resolve, reject) => {
       this.request.get('/ron')
