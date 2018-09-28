@@ -2,18 +2,20 @@ import React from 'react'
 import Display from './components/Display.jsx'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
 import { fetchJokes, handleError } from 'redux/actions'
 
 class DisplayContainer extends React.Component {
+
   render() {
     return (
-      <Display
-        joke={this.props.joke}
-        loading={this.props.loading}
-        errorHandler={this.props.handleError}
-        fetchJokes={this.props.fetchJokes}
-      />
+      <React.Fragment>
+        <Display
+          joke={this.props.joke}
+          loading={this.props.loading}
+          errorHandler={this.props.handleError}
+          fetchJokes={this.props.fetchJokes}
+        />
+      </React.Fragment>
     )
   }
 }

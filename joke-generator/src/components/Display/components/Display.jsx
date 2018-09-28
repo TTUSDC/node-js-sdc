@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
-import JokeButton from './JokeButton.jsx'
+import JokeButton from 'common/JokeButton/JokeButton.jsx'
 import styles from './Display.styles'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
@@ -21,6 +21,10 @@ const categories = [
   {
     label: 'Computer Science',
     link: 'cs',
+  },
+  {
+    label: 'Personal Jokes',
+    link: 'user',
   },
 ]
 
@@ -50,7 +54,6 @@ export const Display = (props) => {
         <Typography
           id='joke-box'
           className={classes.joke}
-          variant='display2'
           align='center'
         >
           {handleNewJoke()}

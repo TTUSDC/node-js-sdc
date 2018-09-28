@@ -4,6 +4,9 @@ const styles = (theme) => {
       margin: '80px auto',
       width: '80%'
     },
+    joke: {
+      fontSize: 'larger',
+    },
     content: {
       padding: '50px'
     },
