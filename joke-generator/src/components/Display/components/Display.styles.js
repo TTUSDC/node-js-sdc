@@ -8,7 +8,8 @@ const styles = (theme) => {
       fontSize: 'larger',
     },
     content: {
-      padding: '50px'
+      padding: '50px',
+      textAlign: 'center'
     },
     buttonSection: {
       justifyContent: 'center',

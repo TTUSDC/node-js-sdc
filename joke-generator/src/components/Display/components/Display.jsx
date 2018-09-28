@@ -36,9 +36,25 @@ export const Display = (props) => {
     if (props.loading) {
       return <CircularProgress className={classes.progress} />
     } else if (props.joke) {
-      return props.joke
+      return (
+        <Typography
+          id='joke-box'
+          className={classes.joke}
+          align='center'
+        >
+          {props.joke}
+        </Typography>
+      )
     } else {
-      return 'Click on the buttons bellow for some jokes!'
+      return (
+        <Typography
+          id='joke-box'
+          className={classes.joke}
+          align='center'
+        >
+         {'Click on the buttons bellow for some jokes!'}
+        </Typography>
+      )
     }
   }
 
@@ -51,13 +67,7 @@ export const Display = (props) => {
       <CardContent
         className={classes.content}
       >
-        <Typography
-          id='joke-box'
-          className={classes.joke}
-          align='center'
-        >
-          {handleNewJoke()}
-        </Typography>
+        {handleNewJoke()}
       </CardContent>
       <CardActions className={classes.buttonSection}>
         {
