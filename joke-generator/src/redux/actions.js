@@ -7,35 +7,50 @@ const TYPES = {
   TOGGLE_LOADING: 'TOGGLE_LOADING',
 }
 
+// Pure Actions
+
+function toggleSuccess(msg){
+  return ({
+    type: TYPES.TOGGLE_SUCC,
+    payload: {
+      msg: Boolean(msg) ? msg : null
+    },
+  })
+}
+
 /**
  * Starts and stops the fetching of jokes from API
  *
  * @returns {object} action - action for the reducer
  */
-const toggleFetch = (joke) => ({
-  type: TYPES.TOGGLE_FETCH,
-  payload: {
-    loading: Boolean(joke) ? true : false,
-    joke: Boolean(joke) ? joke : null,
-  }
-})
+function toggleFetch(joke) {
+  return ({
+    type: TYPES.TOGGLE_FETCH,
+    payload: {
+      loading: Boolean(joke) ? true : false,
+      joke: Boolean(joke) ? joke : null,
+    }
+  })
+}
 
 /**
  * Starts and stops the error handler
  *
  * @returns {object} action - action for the reducer
  */
-const toggleErr = (errMsg) => ({
-  type: TYPES.TOGGLE_ERR,
-  payload: {
-    error: Boolean(errMsg) ? errMsg : null
-  }
-})
+function toggleErr(errMsg) {
+  return ({
+    type: TYPES.TOGGLE_ERR,
+    payload: {
+      error: Boolean(errMsg) ? errMsg : null
+    }
+  })
+}
 
 /**
  * Converts the weird formatting of the remote API
  */
-const quoteHandler = (string) => {
+function quoteHandler(string) {
   let format = []
   let i = 0
   while (i < string.length) {
@@ -53,10 +68,14 @@ const quoteHandler = (string) => {
 /**
  * Used to finish the loading
  */
-const toggleLoading = (loading) => ({
-  type: TYPES.TOGGLE_LOADING,
-  payload: { loading }
-})
+function toggleLoading(loading) {
+  return({
+    type: TYPES.TOGGLE_LOADING,
+    payload: { loading }
+  })
+}
+
+// Async Actions
 
 /**
  * Fetches jokes from the API and either signals and error or a joke
@@ -72,13 +91,16 @@ export const fetchJokes = (type) => (dispatch) => Promise.resolve()
       switch(type) {
         case('ron'):
           joke = await request.getRonJoke()
-          break;
+          break
         case('chuck'):
           joke = await request.getChuckJoke()
-          break;
+          break
         case('cs'):
           joke = await request.getCSJoke()
-          break;
+          break
+        case('user'):
+          joke = await request.getUserJoke()
+          break
         default:
           joke = await request.getChuckJoke()
           logger.error(`We do not support that joke type: ${type}`)
@@ -90,7 +112,43 @@ export const fetchJokes = (type) => (dispatch) => Promise.resolve()
   })
   .catch((err) => {
     logger.error(err || new Error('Unknown Error'))
-    dispatch(toggleErr('Cannot Connect to Server. Please try again later'))
+    dispatch(handleError('Cannot Connect to Server. Please try again later'))
+  })
+  .finally(() => {
+    dispatch(toggleLoading(false))
+  })
+
+/**
+ * Creates a joke that will be saved into the database
+ */
+export const createJoke = (joke) => (dispatch) => Promise.resolve()
+  .then(() => {
+    dispatch(toggleLoading(true))
+  })
+  .then(async () => {
+    try {
+      let request = new Request()
+      await request.createUserJoke(joke)
+      dispatch(toggleSuccess('Joke Created Successfully'))
+    } catch (err) {
+      throw err
+    }
+  })
+  .catch((err) => {
+    logger.error(err || new Error('Unknown Error'))
+    dispatch(handleError('Cannot Connect to Server. Please try again later'))
+  })
+  .finally(() => {
+    dispatch(toggleLoading(false))
+  })
+
+/**
+ * Error handler. Will also clear the error and loading state
+ */
+export const handleError = (err) => (dispatch) => Promise.resolve()
+  .then(() => {
+    logger.error(err || new Error('Unknown Error'))
+    dispatch(toggleErr(err))
   })
   .finally(() => {
     dispatch(toggleLoading(false))
@@ -102,22 +160,23 @@ export const fetchJokes = (type) => (dispatch) => Promise.resolve()
     }, 4000)
   })
 
+
 /**
- * Error handler. Will also clear the error and loading state
+ * Set the success message
  */
-export const handleError = (err) => (dispatch) => Promise.resolve()
+export const handleSuccess = (msg) => (dispatch) => Promise.resolve()
   .then(() => {
-    logger.error(err || new Error('Unknown Error'))
-    dispatch(toggleErr('Internal Server Error!'))
+    dispatch(toggleSuccess(msg))
   })
   .finally(() => {
     dispatch(toggleLoading(false))
   })
   .finally(() => {
     setTimeout(() => {
-      logger.error('Clearing Error')
-      dispatch(toggleErr())
+      logger.error('Clearing Success')
+      dispatch(toggleSuccess())
     }, 4000)
   })
+
 
 export default TYPES
