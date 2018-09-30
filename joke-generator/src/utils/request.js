@@ -28,6 +28,7 @@ export default class Request {
     return new Promise((resolve, reject) => {
       this.request.get('/user')
         .then(({ data }) => {
+          console.log(data)
           resolve(data.joke)
         })
         .catch((err) => {
