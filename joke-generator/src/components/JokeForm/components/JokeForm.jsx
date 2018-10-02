@@ -1,11 +1,15 @@
 import React from 'react'
-import CreateJokeButton from './CreateJokeButton.jsx'
+import { ModalView } from 'common/ModalView'
 
 export const JokeForm = (props) => {
   return (
-    <React.Fragment>
-      <CreateJokeButton loading={props.loading} />
-    </React.Fragment>
+    <ModalView
+      open={props.open}
+      toggle={props.toggle}
+    >
+      "Hello World"
+    </ModalView>
+
   )
 }
 

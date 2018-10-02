@@ -12,6 +12,7 @@ export const CreateJokeButton = (props) => {
       color='secondary'
       disabled={props.loading}
       className={props.classes.root}
+      onClick={props.toggleForm}
     >
       {"Create a new Joke!"}
     </Button>
