@@ -1,6 +1,6 @@
 import assert from 'assert'
-import ActionTypes from './actions'
 import IM from 'immutable'
+import ActionTypes from './actions'
 
 const initialState = IM.fromJS({
   joke: null,
@@ -12,29 +12,30 @@ const initialState = IM.fromJS({
 })
 
 const jokeHandler = (state = initialState, action) => {
-  switch(action.type) {
-    case(ActionTypes.TOGGLE_FETCH):
-      state =  state.set('loading', action.payload.loading)
-      state =  state.set('joke', action.payload.joke)
+  let newState = state
+  switch (action.type) {
+    case (ActionTypes.TOGGLE_FETCH):
+      newState = state.set('loading', action.payload.loading)
+      newState = state.set('joke', action.payload.joke)
       break
-    case(ActionTypes.TOGGLE_ERR):
-      state = state.set('error', Boolean(action.payload.error))
-      state = state.set('errMsg', action.payload.error)
+    case (ActionTypes.TOGGLE_ERR):
+      newState = state.set('error', Boolean(action.payload.error))
+      newState = state.set('errMsg', action.payload.error)
       break
-    case(ActionTypes.TOGGLE_SUCC):
-      state = state.set('success', Boolean(action.payload.msg))
-      state = state.set('succMsg', action.payload.msg)
+    case (ActionTypes.TOGGLE_SUCC):
+      newState = state.set('success', Boolean(action.payload.msg))
+      newState = state.set('succMsg', action.payload.msg)
       break;
-    case(ActionTypes.TOGGLE_LOADING):
-      state = state.set('loading', action.payload.loading)
+    case (ActionTypes.TOGGLE_LOADING):
+      newState = state.set('loading', action.payload.loading)
       break
     default:
       break
   }
 
-  assert.ok(IM.Map.isMap(state), 'You did not return a Immutable Object')
+  assert.ok(IM.Map.isMap(newState), 'You did not return a Immutable Object')
 
-  return state
+  return newState
 }
 
 export default jokeHandler

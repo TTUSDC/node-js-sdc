@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux'
 import { fetchJokes, handleError, createJoke } from 'redux/actions'
 import JokeForm from './components/JokeForm.jsx'
 import CreateJokeButton from './components/CreateJokeButton.jsx'
-import logger from 'utils/logger'
 
 export class JokeFormContainer extends React.Component {
   state = {
@@ -14,7 +13,7 @@ export class JokeFormContainer extends React.Component {
   // Open and closes the form for creating jokes
   toggleForm = () => {
     this.setState({
-      open: !this.state.open
+      open: !this.state.open,
     })
   }
 
@@ -48,7 +47,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     fetchJokes,
     handleError,
-    createJoke
+    createJoke,
   }, dispatch)
 }
 

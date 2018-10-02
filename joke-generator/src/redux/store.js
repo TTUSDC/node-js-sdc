@@ -6,7 +6,7 @@ import reducers from 'redux/reducer'
 
 const app = createStore(
   reducers,
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk)),
 )
 
 export default app

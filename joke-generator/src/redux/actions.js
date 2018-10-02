@@ -10,11 +10,11 @@ const TYPES = {
 
 // Pure Actions
 
-function toggleSuccess(msg){
+function toggleSuccess(msg) {
   return ({
     type: TYPES.TOGGLE_SUCC,
     payload: {
-      msg: Boolean(msg) ? msg : null
+      msg: msg || null,
     },
   })
 }
@@ -28,9 +28,9 @@ function toggleFetch(joke) {
   return ({
     type: TYPES.TOGGLE_FETCH,
     payload: {
-      loading: Boolean(joke) ? true : false,
-      joke: Boolean(joke) ? joke : null,
-    }
+      loading: !!joke,
+      joke: joke || null,
+    },
   })
 }
 
@@ -43,8 +43,8 @@ function toggleErr(errMsg) {
   return ({
     type: TYPES.TOGGLE_ERR,
     payload: {
-      error: Boolean(errMsg) ? errMsg : null
-    }
+      error: errMsg || null,
+    },
   })
 }
 
@@ -52,54 +52,89 @@ function toggleErr(errMsg) {
  * Converts the weird formatting of the remote API
  */
 function quoteHandler(string) {
-  let format = []
+  const format = []
   let i = 0
   while (i < string.length) {
     if (string.slice(i, i + 6) === '&quot;') {
-      format.push(`"`)
+      format.push('"')
       i += 6
     } else {
       format.push(string[i])
       i += 1
     }
   }
-  return format.join("")
+  return format.join('')
 }
 
 /**
  * Used to finish the loading
  */
 function toggleLoading(loading) {
-  return({
+  return ({
     type: TYPES.TOGGLE_LOADING,
-    payload: { loading }
+    payload: { loading },
   })
 }
 
 // Async Actions
 
 /**
+ * Error handler. Will also clear the error and loading state
+ */
+export const handleError = err => dispatch => Promise.resolve()
+  .then(() => {
+    logger.error(err || new Error('Unknown Error'))
+    dispatch(toggleErr(err))
+  })
+  .finally(() => {
+    dispatch(toggleLoading(false))
+  })
+  .finally(() => {
+    setTimeout(() => {
+      logger.error('Clearing Error')
+      dispatch(toggleErr())
+    }, 4000)
+  })
+
+/**
+ * Set the success message
+ */
+export const handleSuccess = msg => dispatch => Promise.resolve()
+  .then(() => {
+    dispatch(toggleSuccess(msg))
+  })
+  .finally(() => {
+    dispatch(toggleLoading(false))
+  })
+  .finally(() => {
+    setTimeout(() => {
+      logger.error('Clearing Success')
+      dispatch(toggleSuccess())
+    }, 4000)
+  })
+
+/**
  * Fetches jokes from the API and either signals and error or a joke
  */
-export const fetchJokes = (type) => (dispatch) => Promise.resolve()
+export const fetchJokes = type => dispatch => Promise.resolve()
   .then(() => {
     dispatch(toggleLoading(true))
   })
   .then(async () => {
     try {
       let joke
-      let request = new Request()
-      switch(type) {
-        case('ron'):
+      const request = new Request()
+      switch (type) {
+        case ('ron'):
           joke = await request.getRonJoke()
           break
-        case('chuck'):
+        case ('chuck'):
           joke = await request.getChuckJoke()
           break
-        case('cs'):
+        case ('cs'):
           joke = await request.getCSJoke()
           break
-        case('user'):
+        case ('user'):
           joke = await request.getUserJoke()
           break
         default:
@@ -122,13 +157,13 @@ export const fetchJokes = (type) => (dispatch) => Promise.resolve()
 /**
  * Creates a joke that will be saved into the database
  */
-export const createJoke = (joke) => (dispatch) => Promise.resolve()
+export const createJoke = joke => dispatch => Promise.resolve()
   .then(() => {
     dispatch(toggleLoading(true))
   })
   .then(async () => {
     try {
-      let request = new Request()
+      const request = new Request()
       await request.createUserJoke(joke)
       dispatch(toggleSuccess('Joke Created Successfully'))
     } catch (err) {
@@ -142,42 +177,5 @@ export const createJoke = (joke) => (dispatch) => Promise.resolve()
   .finally(() => {
     dispatch(toggleLoading(false))
   })
-
-/**
- * Error handler. Will also clear the error and loading state
- */
-export const handleError = (err) => (dispatch) => Promise.resolve()
-  .then(() => {
-    logger.error(err || new Error('Unknown Error'))
-    dispatch(toggleErr(err))
-  })
-  .finally(() => {
-    dispatch(toggleLoading(false))
-  })
-  .finally(() => {
-    setTimeout(() => {
-      logger.error('Clearing Error')
-      dispatch(toggleErr())
-    }, 4000)
-  })
-
-
-/**
- * Set the success message
- */
-export const handleSuccess = (msg) => (dispatch) => Promise.resolve()
-  .then(() => {
-    dispatch(toggleSuccess(msg))
-  })
-  .finally(() => {
-    dispatch(toggleLoading(false))
-  })
-  .finally(() => {
-    setTimeout(() => {
-      logger.error('Clearing Success')
-      dispatch(toggleSuccess())
-    }, 4000)
-  })
-
 
 export default TYPES

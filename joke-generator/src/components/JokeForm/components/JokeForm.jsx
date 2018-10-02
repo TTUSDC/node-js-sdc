@@ -2,12 +2,13 @@ import React from 'react'
 import { ModalView } from 'common/ModalView'
 
 export const JokeForm = (props) => {
+  const { open, toggle } = props
   return (
     <ModalView
-      open={props.open}
-      toggle={props.toggle}
+      open={open}
+      toggle={toggle}
     >
-      "Hello World"
+      {'Hello World'}
     </ModalView>
 
   )
