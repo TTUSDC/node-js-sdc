@@ -93,12 +93,12 @@ let maybe_big_or_small = 200 > x // Depends on what `x` is at that point in time
 * Does not necessarily need to have the same data types (string, numbers or Object literals)
 ```javascript
 let person = {
-  name: 'Miggy', // String data type
-  age: 18, // Number data type
-  interests: { // nested objects
-    math: false, // Booleans
-    food: true
-  }
+    name: 'Miggy', // String data type
+    age: 18, // Number data type
+    interests: { // nested objects
+      math: false, // Booleans
+      food: true
+    }
 }
 ```
 * Accessed by using dot/bracket notation
@@ -162,6 +162,21 @@ let mixed_bag = ['Eggs', 9, { fun: true }, false]
     * `.pop()`
     * `.push()`
     * `.reverse()`
+* Challenges
+    * write a function that will print a list of numbers in decreasing order
+    ```javascript
+    // Boiler plate
+    function fixit(name) { ... } // Fill out this function
+
+    let random_names = [
+        "Miggy", "Simon", "Juanita", "Matt",
+        "Wenhao", "Angel", "Baylee", "Kevin",
+        "Haroon"
+    ]
+
+    fixit(random_names)
+    // Should print out the names in reverse starting with Wenhao
+    ```
 
 **Sets**
 * Does not allow duplicates and allows for quick existence look ups
@@ -193,4 +208,33 @@ let dictionary = new Map([['name', 'Miggy'], ['age', 9], ['interests', 'eatting'
     * `.get(key)`
     * `.delete(key)`
     * `.has(key)`
+    * `.entries() // Returns an Iterator`
     * `.size`
+
+* Iterators
+    * A value generator. Value can be accessed using `.next()`
+    ```javascript
+    let map = new Map()
+    map.set('0', 'foo')
+    map.set(1, 'bar')
+
+    let iterator = map.entries()
+    console.log(iterator.next().value)
+    // ["0", "foo"]
+
+    console.log(iterator.next().value)
+    // [1, "bar"]
+
+    console.log(iterator.next().value)
+    // undefinded
+    ```
+* Challenge
+    * Count the number of characters within a given string
+    ```javascript
+    // Boiler plate
+    function count_chars(word) { ... }
+
+    let word = "Hello my name is Miggy What is your name"
+
+    count_chars(word)
+    ```
