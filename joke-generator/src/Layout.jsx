@@ -17,18 +17,18 @@ const theme = createMuiTheme({
     type: 'dark',
     primary: black,
     secondary: red,
-  }
-})
+  },
+});
 
 class Layout extends React.Component {
   state = {
-    open: false
+    open: false,
   }
 
   toggleModal = () => {
     this.setState({
       ...this.state,
-      open: !this.state.open
+      open: !this.state.open,
     })
   }
 
