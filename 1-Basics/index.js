@@ -51,12 +51,62 @@ let array = ["Miggy", "Josh"]
 
 let element = array.pop()
 
-console.log(element)
-console.log(array)
 
-console.log(array.push("Baylee"))
 array.push("Matt")
 array.push("Brett")
 
-console.log(array)
-// 1in 2.54cm
+
+function fixit(names) {
+    let sorted_names = names.sort().reverse()
+    console.log(sorted_names)
+}
+
+let random_names = new Set([
+    "Miggy", "Simon", "Juanita", "Matt",
+    "Wenhao", "Angel", "Baylee", "Kevin",
+    "Haroon"
+])
+
+let map = new Map()
+
+map.set("color", "blue")
+console.log(map)
+
+console.log(map.size)
+
+let iterator = map.entries()
+console.log(iterator.next().value)
+console.log(iterator.next().value)
+console.log(iterator.next().value)
+console.log(iterator.next().value)
+
+
+function count_chars(phrase) {
+    let map = new Map()
+    for (let i = 0; i < phrase.length; i = i + 1) {
+        // Check whether or not the letter exists
+        // If it does, increase value by 1
+        // Otherwise, add the it
+    }
+
+    
+    
+    // if statements
+    // if ( word == "Hello") {
+    //     console.log("Hello")
+    // } else {
+    //     console.log("Happens if the if statement fails")
+    // }
+
+    // for (let i = 0; i < word.length; i += 1) {
+
+    // }
+
+    // while(true) {
+        
+    // }
+}
+
+let word = "Hello my name is Miggy What is your name"
+
+count_chars(word)
