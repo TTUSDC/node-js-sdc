@@ -163,7 +163,7 @@ let mixed_bag = ['Eggs', 9, { fun: true }, false]
     * `.push()`
     * `.reverse()`
 * Challenges
-    * write a function that will print a list of numbers in decreasing order
+    * write a function that will print a list of names in reverse alphabetical order
     ```javascript
     // Boiler plate
     function fixit(name) { ... } // Fill out this function
@@ -238,3 +238,4 @@ let dictionary = new Map([['name', 'Miggy'], ['age', 9], ['interests', 'eatting'
 
     count_chars(word)
     ```
+    * Hint: this uses if statements and while/for loops
