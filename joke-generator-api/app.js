@@ -19,11 +19,12 @@ mongoose.connect('mongodb://localhost:27017/acm', {
   })
   .catch((err) => {
     console.error(err)
+    process.exit()
   })
 
 app.get('/user', async (req, res) => {
   try {
-    let joke = await JokeModel.getOneJoke()
+    const joke = await JokeModel.getOneJoke()
     res.json(joke)
   } catch (err) {
     res.status(404).json({ err })
@@ -37,7 +38,6 @@ app.post('/user', async (req, res) => {
   } catch (err) {
     res.status(404).json({ err })
   }
-
 })
 
 /**
@@ -49,7 +49,7 @@ app.get('/chuck', (req, res) => {
       res.json({ joke: response.data.value.joke })
     })
     .catch((err) => {
-      res.status(404).json({ err: err })
+      res.status(404).json({ err })
     })
 })
 
@@ -62,7 +62,7 @@ app.get('/cs', (req, res) => {
       res.status(200).json({ joke: response.data })
     })
     .catch((err) => {
-      res.status(404).json({ err: err })
+      res.status(404).json({ err })
     })
 })
 
@@ -75,7 +75,7 @@ app.get('/ron', (req, res) => {
       res.json({ joke: response.data[0] })
     })
     .catch((err) => {
-      res.status(404).json({ err: err })
+      res.status(404).json({ err })
     })
 })
 

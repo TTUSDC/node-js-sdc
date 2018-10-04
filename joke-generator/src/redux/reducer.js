@@ -20,11 +20,11 @@ const jokeHandler = (state = initialState, action) => {
       break
     case (ActionTypes.TOGGLE_ERR):
       newState = state.set('error', Boolean(action.payload.error))
-      newState = state.set('errMsg', action.payload.error)
+        .set('errMsg', action.payload.error)
       break
     case (ActionTypes.TOGGLE_SUCC):
       newState = state.set('success', Boolean(action.payload.msg))
-      newState = state.set('succMsg', action.payload.msg)
+        .set('succMsg', action.payload.msg)
       break;
     case (ActionTypes.TOGGLE_LOADING):
       newState = state.set('loading', action.payload.loading)
