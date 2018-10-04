@@ -21,7 +21,6 @@ export class JokeForm extends React.PureComponent {
   }
 
   handleClick = () => {
-    console.log(this.state.newJoke)
     this.props.handleSubmit(this.state.newJoke)
     this.props.toggle()
   }

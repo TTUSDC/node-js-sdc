@@ -1,6 +1,6 @@
 const styles = theme => ({
   card: {
-    margin: '80px auto',
+    margin: '25px auto',
     width: '80%',
   },
   joke: {

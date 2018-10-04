@@ -25,7 +25,7 @@ export class JokeFormContainer extends React.Component {
 
   render() {
     return(
-      <React.Fragment>
+      <div style={{ textAlign: 'center', margin: '25px 0px' }}>
         <JokeForm
           open={this.state.open}
           toggle={this.toggleForm}
@@ -34,7 +34,7 @@ export class JokeFormContainer extends React.Component {
         <CreateJokeButton
           toggleForm={this.toggleForm}
         />
-      </React.Fragment>
+      </div>
     )
   }
 }
