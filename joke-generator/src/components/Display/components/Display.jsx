@@ -6,8 +6,8 @@ import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import JokeButton from 'common/JokeButton/JokeButton.jsx'
-import styles from './Display.styles'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import styles from './Display.styles'
 
 const categories = [
   {
@@ -35,7 +35,7 @@ export const Display = (props) => {
   const handleNewJoke = () => {
     if (props.loading) {
       return <CircularProgress className={classes.progress} />
-    } else if (props.joke) {
+    } if (props.joke) {
       return (
         <Typography
           id='joke-box'
@@ -45,24 +45,23 @@ export const Display = (props) => {
           {props.joke}
         </Typography>
       )
-    } else {
-      return (
-        <Typography
-          id='joke-box'
-          className={classes.joke}
-          align='center'
-        >
-         {'Click on the buttons bellow for some jokes!'}
-        </Typography>
-      )
     }
+    return (
+      <Typography
+        id='joke-box'
+        className={classes.joke}
+        align='center'
+      >
+        {'Click on the buttons bellow for some jokes!'}
+      </Typography>
+    )
   }
 
   return (
     <Card className={classes.card}>
       <CardHeader
         title='Jokes For ACM!'
-        titleTypographyProps={ { align: 'center' } }
+        titleTypographyProps={{ align: 'center' }}
       />
       <CardContent
         className={classes.content}
@@ -71,17 +70,15 @@ export const Display = (props) => {
       </CardContent>
       <CardActions className={classes.buttonSection}>
         {
-          categories.map((topic, key) => {
-            return (
-              <JokeButton
-                fetchJokes={props.fetchJokes}
-                loading={props.loading}
-                label={topic.label}
-                link={topic.link}
-                key={key}
-              />
-            )
-          })
+          categories.map((topic, key) => (
+            <JokeButton
+              fetchJokes={props.fetchJokes}
+              loading={props.loading}
+              label={topic.label}
+              link={topic.link}
+              key={topic.label}
+            />
+          ))
         }
       </CardActions>
     </Card>

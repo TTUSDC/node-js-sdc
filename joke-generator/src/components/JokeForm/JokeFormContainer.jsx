@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchJokes, handleError, createJoke } from 'redux/actions'
@@ -28,6 +29,7 @@ export class JokeFormContainer extends React.Component {
         <JokeForm
           open={this.state.open}
           toggle={this.toggleForm}
+          handleSubmit={this.handleSubmit}
         />
         <CreateJokeButton
           toggleForm={this.toggleForm}
@@ -49,6 +51,10 @@ function mapDispatchToProps(dispatch) {
     handleError,
     createJoke,
   }, dispatch)
+}
+
+JokeFormContainer.propTypes = {
+  createJoke: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(JokeFormContainer)
