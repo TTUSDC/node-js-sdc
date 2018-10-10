@@ -56,7 +56,7 @@ function prime_time() {
     if (!sieve[i]) {
       // i has not been marked -- it is prime
       primes.push(i)
-      for (j = i < 1; j <= 50; j += i) {
+      for (j = 0; j <= 50; j += i) {
         sieve[j] = true
       }
     }
@@ -77,8 +77,8 @@ function wheres_my_car(car) {
 
 function two_sum(arr, target) {
   let results = [];
-  for (let i=0; i<arr.length; i++) {
-    for (let j=i+1; j<arr.length; j++) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
       if (arr[j] === target - arr[i]) {
         results.push([arr[i], arr[j]])
       }
@@ -89,18 +89,18 @@ function two_sum(arr, target) {
 }
 
 function main() {
-  even_odd()
-  chosen_pet_name()
-  alexa()
-  weird_series()
-  lil_pump()
+  // even_odd()
+  // chosen_pet_name()
+  // alexa()
+  // weird_series()
+  // lil_pump()
   prime_time()
-
-  const car = 'Some Lemon'
-  wheres_my_car(car)
-
-  let arr = [7, 0, -4, 5, 2, 3]
-  two_sum(arr, 5)
+  //
+  // const car = 'Some Lemon'
+  // wheres_my_car(car)
+  //
+  // let arr = [7, 0, -4, 5, 2, 3]
+  // two_sum(arr, 5)
 }
 
 main()
