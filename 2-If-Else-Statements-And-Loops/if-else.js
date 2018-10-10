@@ -50,7 +50,7 @@ function prime_time() {
   let sieve = []
   let i
   let j
-  let primes = [];
+  let primes = []
 
   for (i = 2; i <= 50; ++i) {
     if (!sieve[i]) {
