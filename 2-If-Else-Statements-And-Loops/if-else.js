@@ -89,18 +89,18 @@ function two_sum(arr, target) {
 }
 
 function main() {
-  // even_odd()
-  // chosen_pet_name()
-  // alexa()
-  // weird_series()
-  // lil_pump()
+  even_odd()
+  chosen_pet_name()
+  alexa()
+  weird_series()
+  lil_pump()
   prime_time()
-  //
-  // const car = 'Some Lemon'
-  // wheres_my_car(car)
-  //
-  // let arr = [7, 0, -4, 5, 2, 3]
-  // two_sum(arr, 5)
+
+  const car = 'Some Lemon'
+  wheres_my_car(car)
+
+  let arr = [7, 0, -4, 5, 2, 3]
+  two_sum(arr, 5)
 }
 
 main()
