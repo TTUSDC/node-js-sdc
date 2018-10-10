@@ -33,10 +33,74 @@ function alexa() {
   }
 }
 
-function main() {
-  process.argv.forEach((each) => console.log(each))
-  even_odd()
-  // chosen_pet_name()
-  // alexa()
+function weird_series() {
+  for(let i = 0; i <= 100; i += 1) {
+    if(i % 2 === 0 && i % 3 === 0) console.log(i)
+  }
 }
- main()
+
+function lil_pump() {
+  for(let i = 0; i < 8; i += 1) {
+    console.log('Gucci Gang')
+  }
+  console.log('Spend ten racks on a new chain')
+}
+
+function prime_time() {
+  let sieve = []
+  let i
+  let j
+  let primes = [];
+
+  for (i = 2; i <= 50; ++i) {
+    if (!sieve[i]) {
+      // i has not been marked -- it is prime
+      primes.push(i)
+      for (j = i < 1; j <= 50; j += i) {
+        sieve[j] = true
+      }
+    }
+  }
+  console.log(primes)
+}
+
+function wheres_my_car(car) {
+  let garage = ['F150', 'Model 3', 'Some Lemon', 'Prius', 'Not My Car']
+  let i = 0
+  while(i < garage.length) {
+    if(garage[i] === car) {
+      console.log("Found the car: ", garage[i])
+    }
+    i += 1
+  }
+}
+
+function two_sum(arr, target) {
+  let results = [];
+  for (let i=0; i<arr.length; i++) {
+    for (let j=i+1; j<arr.length; j++) {
+      if (arr[j] === target - arr[i]) {
+        results.push([arr[i], arr[j]])
+      }
+    }
+  }
+
+  console.log(results)
+}
+
+function main() {
+  even_odd()
+  chosen_pet_name()
+  alexa()
+  weird_series()
+  lil_pump()
+  prime_time()
+
+  const car = 'Some Lemon'
+  wheres_my_car(car)
+
+  let arr = [7, 0, -4, 5, 2, 3]
+  two_sum(arr, 5)
+}
+
+main()

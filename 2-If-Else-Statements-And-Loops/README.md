@@ -2,7 +2,7 @@
 Allows us to pass arguments into the program
 1. 'node'
 2. path to the file
-3. and everything else: variables
+3. and everything else as a string: variables
 
 # If/ Else if/  Else Statements
 
@@ -28,6 +28,9 @@ if (condition) {
 }
 
 if (condition) one statement
+
+if (condition)
+  one statement
 ```
 
 Real Example
@@ -78,6 +81,7 @@ if ( age === 21 ) {
 
 ## For Loops
 * A loop that will execute `x` amount of times
+
 ```javascript
 for (let i = 0; i < 10; i+=1) {
   console.log(i) // 0 to 9
@@ -143,23 +147,22 @@ console.log('Done')
 
 * write a function called `wheres_my_car()` that will loop through an array until we find the Prius
 ```javascript
-function `wheres_my_car()` {
-  let garage = ['F150', 'Model 3', 'Some Lemon', 'Prius', 'Not My Car']
-  while (condition) {
-    // TODO: add logic here
-  }
-}
-```
-* **Challenge** - write a function called `find_me()` that will find the first number that is multiple of 2 given numbers
-
-  *Hint: use process.argv to supply the two numbers*
-
-  ```javascript
-  function find_me() {
-    let first_number = process.argv[2]
-    let second_number = process.argv[3]
+function `wheres_my_car(car)` {
+    let garage = ['F150', 'Model 3', 'Some Lemon', 'Prius', 'Not My Car']
     while (condition) {
       // TODO: add logic here
     }
+}
+```
+* **Challenge** - write a function called `two_sum()` that will return all pairs that sum to a target value
+
+  ```javascript
+  function two_sum(arr, target) {
+    let results = [];
+    // Code goes here...
+    return results;
   }
+
+  let arr = [7, 0, -4, 5, 2, 3]
+  twoSum(arr, 5); // [[0, 5], [2, 3]]
   ```
