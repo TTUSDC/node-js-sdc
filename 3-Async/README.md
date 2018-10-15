@@ -35,11 +35,16 @@ function print(i, callback) {
 
 function counter() {
   print(1, function() {
+    console.log(1)
     print(2, function() {
+      console.log(2)
       print(3, function() {
-        print(4, function() {
-          print(5, function() {
-            print(6, function() {
+        console.log(3)
+        print(4, () => {
+          console.log(4)
+          print(5, () => {
+            console.log(5)
+            print(6, () => {
               console.log('done!')
             })
           })
@@ -72,7 +77,7 @@ function counter() {
 
 ```javascript
 function fakeAPI(name) {
-  return new Promise(function(resolve, reject) {
+  return new Promise((resolve, reject) => {
     if (name === 'Miggy') {
       resolve('Some Data!')
     } else {
@@ -83,7 +88,7 @@ function fakeAPI(name) {
 
 
 fakeAPI('Reyes')
-  .then(function(data) {
+  .then((data) => {
     console.log(data)
   })
   .catch(function(err) {
@@ -97,7 +102,7 @@ fakeAPI('Reyes')
 
 ```javascript
 function fakeAPI(name) {
-  return new Promise(function(resolve, reject) {
+  return new Promise((resolve, reject) => {
     if (name === 'Miggy') {
       resolve('Some Data!')
     } else {
@@ -108,8 +113,8 @@ function fakeAPI(name) {
 
 async function controller() {
   try {
-    const bio = await fakeAPI('Miggy')
-    const anotherBio = await fakeAPI('Josh')
+    const bio = await fakeAPI('Josh')
+    const anotherBio = await fakeAPI('Miggy')
   } catch (err) {
     console.log(err) // When the promise rejects with an error
   }
