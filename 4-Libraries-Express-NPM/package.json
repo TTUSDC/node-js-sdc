@@ -1,0 +1,14 @@
+{
+  "name": "4-libraries-express-npm",
+  "version": "1.0.0",
+  "description": "- A module is a piece of code that is exported for use in a different function - There is not size limit for how big a module can be - we typically want to keep modules at a medium size - Libraries and Modules are synomymous",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

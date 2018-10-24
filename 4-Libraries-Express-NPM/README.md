@@ -76,15 +76,15 @@
     const port = 3000
 
     app.get('/', (response, request) => {
-      res.send('Hello World!')
+        res.send('Hello World!')
     })
 
     app.get('/goodbye', (request, response) => {
-      res.send('Good Bye, world!')
+        res.send('Good Bye, world!')
     })
 
     app.listen(port, () => {
-      console.log(`Listening on port ${port}`)
+        console.log(`Listening on port ${port}`)
     })
     ```
 
@@ -96,19 +96,19 @@
     const router = express.Router()
 
     router.get('/hello', (req, res) => {
-      res.send('Hello World!')
+        res.send('Hello World!')
     })
 
     router.get('/goodbye', (req, res) => {
-      res.send('Good Bye World')
+        res.send('Good Bye World')
     })
 
     router.get('/findme', (req, res) => {
-      res.send('Where are you?')
+        res.send('Where are you?')
     })
 
     router.get('/go-away', (req, res) => {
-      res.send('You can leave now')
+        res.send('You can leave now')
     })
 
     exports = router
