@@ -139,6 +139,23 @@
   const seconds = today.getSeconds()
   ```
 * Object
+  - `.keys()`
+  - `.values()`
+  - `.entries()`
 * String
+  - `const msg = 'HelloWorld'`
+  - `.toLowerCase()`
+  - `.toUpperCase()`
+  - `.concat(string1, string2)`
+  - `.includes(string1, string2)`
+  - `.trim(string)`
+
 * Number
+  - `.MAX_VALUE`
+  - `.MIN_VALUE`
 * Array
+  - `.reverse()`
+  - `.reverse()`
+  - `.every(checkerCB)` Returns a boolean value
+  - `.find(checkerCB)` Returns the first element that returned true
+  - `.length`
