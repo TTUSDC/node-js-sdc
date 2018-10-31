@@ -48,28 +48,24 @@ class TodoModel {
     }
   }
 
-  updateTodoByName(name, changes) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const newTodo = await this.mongo.findOneAndUpdate({ name }, changes, { new: true}).exec()
-        resolve(newTodo)
-      } catch (err) {
-        console.error(err)
-        reject(err)
-      }
-    })
+  async updateTodoByName(name, changes) {
+    try {
+      const newTodo = await this.mongo.findOneAndUpdate({ name }, changes, { new: true}).exec()
+      return newTodo
+    } catch (err) {
+      console.error(err)
+      return err
+    }
   }
 
-  deleteTodoByName(name) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        await this.mongo.findOneAndDelete({ name }).exec()
-        resolve()
-      } catch (err) {
-        console.error(err)
-        reject(err)
-      }
-    })
+  async deleteTodoByName(name) {
+    try {
+      await this.mongo.findOneAndDelete({ name }).exec()
+      return
+    } catch (err) {
+      console.error(err)
+      return err
+    }
   }
 }
 

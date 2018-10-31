@@ -32,6 +32,20 @@ After all these steps, we should be able to run mongo
 | Collections | An object within the document that stores a collection of data - *use `db.foobar.insertOne( {name: 'Miggy' })`* |
 
 
-# CRUD (Create, Remove, Update, Delete)
+# CRUD (Create, Read, Update, Delete)
 
+- Create: Create Documents from scratch
 
+- Read: Gets the information about a Document
+
+- Update: Update a Document based on a unique identifier (RaiderID, email) and send back an updated version of the version you changed
+
+- Remove: Remove Documents and return either a success or error message
+
+# Homework
+
+- Create some more features
+- Allow the user to find a single Todo by their name
+- Allow the user to create multiple Todos with one API call
+- Allow users to delete a Todo by name
+- Allow users to update a Todo by name
