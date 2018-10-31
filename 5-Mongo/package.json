@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+    "mongoose": "5.3.8"
+  },
+  "name": "todo-app",
+  "description": "A Quick Todo App",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Miggy",
+  "license": "ISC"
+}

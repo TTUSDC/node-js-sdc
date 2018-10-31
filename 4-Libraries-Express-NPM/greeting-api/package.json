@@ -1,0 +1,14 @@
+{
+  "name": "greeting-api",
+  "version": "1.0.0",
+  "description": "NodeJS Dev APi",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Miggy",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
