@@ -25,7 +25,7 @@ export default class Request {
   // Fetches a saved joke from the database
   getUserJoke = () => new Promise((resolve, reject) => {
     this.request.get('/user')
-      .then(({ data }) => {
+      .then((data) => {
         logger.info(data)
         resolve(data.joke)
       })
