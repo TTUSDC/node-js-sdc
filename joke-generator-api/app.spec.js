@@ -7,7 +7,7 @@ const request = require('supertest')
 describe('Jokes API test', () => {
   it('should recieve valid response from Chuck', (done) => {
     request(app)
-      .get('/chuck')
+      .get('/api/chuck')
       .expect(200)
       .end((err, res) => {
         if (err) {
@@ -22,7 +22,7 @@ describe('Jokes API test', () => {
 
   it('should recieve valid response from CS', (done) => {
     request(app)
-      .get('/cs')
+      .get('/api/cs')
       .expect(200)
       .end((err, res) => {
         if (err) {
@@ -37,7 +37,7 @@ describe('Jokes API test', () => {
 
   it('should recieve valid response from Ron', (done) => {
     request(app)
-      .get('/ron')
+      .get('/api/ron')
       .expect(200)
       .end((err, res) => {
         if (err) {

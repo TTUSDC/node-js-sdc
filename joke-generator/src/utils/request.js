@@ -1,5 +1,4 @@
 import axios from 'axios'
-import logger from 'utils/logger'
 
 /**
  * Wrapper for the axios so that we can fetch the jokes from 3 different APIs
@@ -7,60 +6,53 @@ import logger from 'utils/logger'
 export default class Request {
   constructor() {
     this.request = axios.create({
-      baseURL: 'http://localhost:8080/',
+      baseURL: 'http://localhost:8080/api',
     })
   }
 
   // Sends the joke as a post request
-  createUserJoke = joke => new Promise((resolve, reject) => {
-    this.request.post('/user', { joke })
-      .then(() => {
-        resolve()
-      })
-      .catch((err) => {
-        reject(err)
-      })
-  })
+  async createUserJoke(joke) {
+    try {
+      await this.request.post('/user', { joke })
+    } catch (err) {
+      throw err
+    }
+  }
 
   // Fetches a saved joke from the database
-  getUserJoke = () => new Promise((resolve, reject) => {
-    this.request.get('/user')
-      .then((data) => {
-        logger.info(data)
-        resolve(data.joke)
-      })
-      .catch((err) => {
-        reject(err)
-      })
-  })
+  async getUserJoke() {
+    try {
+      const { data } = await this.request.get('/user')
+      return data.joke
+    } catch (err) {
+      throw err
+    }
+  }
 
-  getRonJoke = () => new Promise((resolve, reject) => {
-    this.request.get('/ron')
-      .then(({ data }) => {
-        resolve(data.joke)
-      })
-      .catch((err) => {
-        reject(err)
-      })
-  })
+  async getRonJoke() {
+    try {
+      const { data } = await this.request.get('/ron')
+      return data.joke
+    } catch (err) {
+      throw err
+    }
+  }
 
-  getCSJoke = () => new Promise((resolve, reject) => {
-    this.request.get('/cs')
-      .then(({ data }) => {
-        resolve(data.joke)
-      })
-      .catch((err) => {
-        reject(err)
-      })
-  })
+  async getCSJoke() {
+    try {
+      const { data } = await this.request.get('/cs')
+      return data.joke
+    } catch (err) {
+      throw err
+    }
+  }
 
-  getChuckJoke = () => new Promise((resolve, reject) => {
-    this.request.get('/chuck')
-      .then(({ data }) => {
-        resolve(data.joke)
-      })
-      .catch((err) => {
-        reject(err)
-      })
-  })
+  async getChuckJoke() {
+    try {
+      const { data } = await this.request.get('/chuck')
+      return data.joke
+    } catch (err) {
+      throw err
+    }
+  }
 }
