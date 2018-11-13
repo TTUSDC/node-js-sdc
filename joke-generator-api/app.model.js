@@ -5,41 +5,35 @@ const jokeSchema = mongoose.Schema({
   timeCreated: { type: Date, required: true }
 })
 
-// Moved the Hashing to the controller
-const JokeModel = module.exports = mongoose.model('Jokes', jokeSchema);
+class JokeModel {
+  constructor() {
+    this.mongo = mongoose.model('Jokes', jokeSchema)
+  }
 
-JokeModel.createOneJoke = (joke) => {
-  return new Promise((resolve, reject) => {
-    let formattedJoke = {
-      joke,
-      timeCreated: new Date()
+  async createJoke(joke) {
+    try {
+      const newJoke = new this.mongo(joke)
+      const savedJoke = await newJoke.save()
+      if (savedJoke === null) throw new Error('Could not save joke')
+      console.log('Save Success!')
+    } catch (err) {
+      console.error(err)
+      throw err
     }
-    newJoke = new JokeModel(formattedJoke)
-    newJoke.save()
-      .then((newJoke) => {
-        if (newJoke === null) throw new Error('Could not save joke')
-        console.log('Save Success!')
-        resolve()
-      })
-      .catch((err) => {
-        console.error(err)
-        reject(err)
-      })
-  })
+  }
+
+  async getOneJoke() {
+    try {
+      const data = await this.mongo.find().exec()
+      if (data === null) throw new Error('No Jokes found')
+      // Random Joke
+      let joke = data[Math.floor(Math.random() * data.length)]
+      return joke
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
+  }
 }
 
-JokeModel.getOneJoke = () => {
-  return new Promise((resolve, reject) => {
-    JokeModel.find()
-      .then((data) => {
-        if (data === null) throw new Error('No Jokes found')
-        // Random Joke
-        let joke = data[Math.floor(Math.random() * data.length)]
-        resolve(joke)
-      })
-      .catch((err) => {
-        console.error(err)
-        reject(err)
-      })
-  })
-}
+module.exports = JokeModel
