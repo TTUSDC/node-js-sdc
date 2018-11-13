@@ -26,4 +26,27 @@ router.post('/create-todo', async (req, res) => {
     }
 })
 
+router.post('/create-two', async (req, res) => {
+    try {
+        const names = req.body.names
+        const contents = req.body.contents
+        const createdTodos = []
+
+        for (i = 0; i < 2; i += 1) {
+            const model = new Model()
+            const createdTodo = await model.createTodo(names[i], contents[i])
+            createdTodos.push(createdTodo)
+        }
+
+        res.json({ createdTodos: createdTodos })
+    } catch (err) {
+        console.error(err)
+        res.status(404).end()
+    }
+})
+
+router.post('/delete-todo', async (req, res) => {
+    
+})
+
 module.exports = router

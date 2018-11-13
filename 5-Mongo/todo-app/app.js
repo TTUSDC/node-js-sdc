@@ -8,17 +8,15 @@ const app = express()
 
 app.use(bp.json())
 
+mongoose.connect('mongodb://miggylol:Lorenzo0925@ds217921.mlab.com:17921/sandbox', { useNewUrlParser: true })
+    .then(() => {
+        console.log('Connected')
+    })
+    .catch((err) => {
+        console.error(err)
+    })
+
 app.use('/api', router)
-
-mongoose.connect('mongodb://localhost:27017/todos', {
-  useNewUrlParser: true
-}).then(() => {
-  console.log('Successfully connected to MongoDB')
-}).catch((err) => {
-  console.error(err)
-  process.exit()
-})
-
 
 app.listen(3000, () => {
     console.log('Starting Server at port 3000')
